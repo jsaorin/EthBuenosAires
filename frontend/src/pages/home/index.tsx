@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useAccount } from 'wagmi'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { FloatingLines } from '@/components/floating-lines'
 import { Step } from '@/types'
 import {
   StepIndicator,
@@ -37,12 +38,20 @@ export function HomePage() {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-[#FF007A]/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-[#7B3FE4]/20 rounded-full blur-[120px]" />
+    <div className="min-h-screen w-full flex items-center justify-center p-4 relative">
+      <div className="fixed inset-0 z-0">
+        <FloatingLines
+          enabledWaves={['middle', 'bottom']}
+          lineCount={[4, 2]}
+          lineDistance={[8, 6]}
+          animationSpeed={0.8}
+
+          parallax={true}
+          parallaxStrength={0.15}
+          mixBlendMode="normal"
+        />
       </div>
-      <Card className="glass-card w-full max-w-md relative">
+      <Card className="w-full max-w-md relative z-10 bg-[#131313] border-white/10 rounded-3xl">
         <CardHeader className="text-center pb-2">
           <CardTitle className="text-3xl font-bold gradient-text">
             DAO Voting
